@@ -8,6 +8,12 @@ def main():
         print(f"Input file '{input_file}' not found.")
         return
 
+    numbers = []
+    for token in text.split():
+        try:
+            numbers.append(int(token))
+        except ValueError:
+            continue
 
 if __name__ == "__main__":
     main()
