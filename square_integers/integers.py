@@ -16,7 +16,13 @@ def process_integer_file(source_path='integer.txt', even_path='double.txt', odd_
                 else:
                     odd_cubes.append(str(value * value * value))
 
+    with open(even_path, 'w') as even_file:
+        even_file.write('\n'.join(even_squares))
 
+    with open(odd_path, 'w') as odd_file:
+        odd_file.write('\n'.join(odd_cubes))
+        
+    print(f"Wrote {len(even_squares)} even squares to '{even_path}' and {len(odd_cubes)} odd cubes to '{odd_path}'.")
 
 
 if __name__ == '__main__':
