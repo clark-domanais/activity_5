@@ -8,7 +8,24 @@ class GWAFinder:
         self.filename = filename
         self.students = []
 
+    def read_students(self):
+        try:
+            with open(self.filename, 'r') as file:
+                for line in file:
+                    parts = line.strip().split(':')
+                    if len(parts) == 2:
+                        name, gwa = parts
+                        self.students.append(Student(name, gwa))
+        except FileNotFoundError:
+            print(f"File {self.filename} not found.")
+        except ValueError:
+            print("Error parsing GWA values.")
 
+    def find_highest(self):
+        if not self.students:
+            return None
+        highest = max(self.students, key=lambda s: s.gwa)
+        return highest
 
 if __name__ == "__main__":
     finder = GWAFinder('students.txt')
