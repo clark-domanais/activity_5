@@ -24,7 +24,7 @@ class GWAFinder:
     def find_highest(self):
         if not self.students:
             return None
-        highest = max(self.students, key=lambda s: s.gwa)
+        highest = min(self.students, key=lambda s: s.gwa)
         return highest
 
 if __name__ == "__main__":
