@@ -1,4 +1,23 @@
 def process_integer_file(source_path='integer.txt', even_path='double.txt', odd_path='triple.txt'):
 
-if __name__ == '__main__': 
+    even_squares = []
+    odd_cubes = []
+
+    with open(source_path, 'r') as source_file:
+        for line in source_file:
+            for token in line.split():
+                try:
+                    value = int(token)
+                except ValueError:
+                    continue
+
+                if value % 2 == 0:
+                    even_squares.append(str(value * value))
+                else:
+                    odd_cubes.append(str(value * value * value))
+
+
+
+
+if __name__ == '__main__':
     process_integer_file()
